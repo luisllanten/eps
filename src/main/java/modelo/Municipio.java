@@ -1,34 +1,47 @@
+
 package modelo;
 
-import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
-
-public class Municipio {
+@Entity
+public class Municipio implements Serializable {
     
-    private Long id;
+    // Atributos
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
     private String codigo;
     private String descripcion;
-    private Departamento departamento;
     
-    public Municipio(){
-        
+    @ManyToOne
+    @JoinColumn(name ="fk_departamento")
+    private Departamento departamento;
+
+    // Constructores
+    public Municipio() {
+    }
+    
+    public Municipio(String c, String d, Departamento de) {
+        this.codigo = c;
+        this.descripcion = d;
+        this.departamento = de;
     }
 
-    public Municipio(Long id, String codigo, String descripcion, Departamento departamento) {
-        this.id = id;
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.departamento = departamento;
-    }
-
-    public Long getId() {
+    // Getters & setters...
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getCodigo() {
         return codigo;
     }
@@ -44,7 +57,7 @@ public class Municipio {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    
     public Departamento getDepartamento() {
         return departamento;
     }
@@ -52,12 +65,5 @@ public class Municipio {
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-
-    
-
-    
-    
-    
-    
-    
+  
 }

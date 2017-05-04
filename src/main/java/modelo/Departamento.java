@@ -1,32 +1,28 @@
+
 package modelo;
 
-import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
-public class Departamento {
+@Entity
+public class Departamento implements Serializable {
     
-    private Long id;
+    // Atributos
+    @Id    
     private String codigo;
     private String descripcion;
+
+    // Constructores
+    public Departamento() {
+    }
     
-    public Departamento(){
-        
-    }    
-
-    public Departamento(Long id, String codigo, String descripcion) {
-        this.id = id;
-        this.codigo = codigo;
-        this.descripcion = descripcion;
+    public Departamento(String c, String d) {
+        this.codigo = c;
+        this.descripcion = d;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    // Getters & setters...
     public String getCodigo() {
         return codigo;
     }
@@ -42,6 +38,5 @@ public class Departamento {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-       
+  
 }

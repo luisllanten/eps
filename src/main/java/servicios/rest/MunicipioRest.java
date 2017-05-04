@@ -1,57 +1,52 @@
 package servicios.rest;
 
 import java.util.Collection;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import modelo.Municipio;
-import modelo.PersistenciaBasica;
 import javax.ws.rs.*;
+import modelo.Ips;
 
 
 @Path("/municipio")
 @Produces("application/json")
+@Stateless
 public class MunicipioRest {
     
-    @Inject PersistenciaBasica persistenciaBasica;
-    
-    @GET
-    @Produces("application/json")
-    public Collection<Municipio> listar(){
-        return persistenciaBasica.listaMunicipio();
-    }
+    @PersistenceContext(unitName = "epsPU")
+    protected EntityManager em;
     
     @GET
     @Path("{id}")
-    @Produces("application/json")
-    public Municipio buscar(@PathParam("id") Long pId){
-        System.out.println("buscando Municipio con id: "+pId);
-        return persistenciaBasica.buscarMunicipio(pId);
+    @Produces("application/json")       
+    public Municipio buscar(@PathParam("id") Integer pId){
+        return em.find(Municipio.class, pId);        
     }
+       
     
     @PUT
     @Consumes("application/json")
     @Produces("application/json")
-    public Municipio agregar(Municipio mun){
-        persistenciaBasica.crearMunicipio(mun);
-        return mun;
+    public Municipio agregar(Municipio entity){
+       em.persist(entity);
+       em.flush();
+       return entity;
     }
     
     @DELETE
     @Path("{id}")
     public Response borrar(@PathParam("id") Long pId){
-        System.out.println("eliminando Municipio con id: "+pId);
-        persistenciaBasica.eliminarMunicipio(pId);
+        Municipio m = em.find(Municipio.class, pId);
+        if(!m.equals(null)){
+        em.remove(m);
+        }else{
+            System.out.println("Ips no encontrado");
+        }
         return Response.noContent().build();
-    }
-    
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Municipio actualizar(Municipio mun){
-        persistenciaBasica.actualizarMunicipio(mun);
-        return mun;
-    }
-    
+    }   
 }
