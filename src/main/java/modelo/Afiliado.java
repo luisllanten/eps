@@ -21,8 +21,7 @@ public class Afiliado implements Serializable {
     
     // Atributos
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
+    private int id;
     private String tipo_documento;
     private String num_documento;
     private String apellido1;

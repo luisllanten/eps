@@ -1,10 +1,12 @@
 package servicios.rest;
 
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
@@ -14,7 +16,6 @@ import modelo.Departamento;
 
 
 @Path("/ips")
-@Produces("application/json")
 @Stateless
 public class IpsRest {
     
@@ -28,6 +29,14 @@ public class IpsRest {
         return em.find(Ips.class, pId);        
     }
        
+    @GET 
+    @Produces("application/json")
+    public List<Ips> buscarTodos(){
+        String jpql = "SELECT i FROM Ips i";
+        TypedQuery<Ips> q = em.createQuery(jpql,Ips.class);
+        List<Ips> resultado = q.getResultList();
+        return resultado;
+    }
     
     @PUT
     @Consumes("application/json")
@@ -42,7 +51,7 @@ public class IpsRest {
     @Path("{id}")
     public Response borrar(@PathParam("id") Long pId){
         Ips i = em.find(Ips.class, pId);
-        if(!i.equals(null)){
+         if(i!=null){
         em.remove(i);
         }else{
             System.out.println("Ips no encontrado");

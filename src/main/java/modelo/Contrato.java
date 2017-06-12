@@ -28,7 +28,7 @@ public class Contrato implements Serializable {
     @Temporal(TemporalType.DATE )
     private Date fin;
     
-    private int monto;
+    private float monto;
      
     @ManyToOne
     @JoinColumn(name ="fk_ips")
@@ -89,7 +89,7 @@ public class Contrato implements Serializable {
         this.fin = fin;
     }
     
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
     

@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>IpsJSF</title>
+    </h:head>
+
+    <h:body>
+        <h1> Ips </h1>
+        <h:form>            
+            <p:dataTable id="ips" var="ip" value="#{ipsBean.ipss}">
+                <p:column headerText="id">
+                    <h:outputText value="#{ip.id}" />
+                </p:column>
+
+               <p:column headerText="Codigo">
+                   <h:outputText value="#{ip.codigo}" />
+                </p:column>
+                
+                 <p:column headerText="Correo">
+                     <h:outputText value="#{ip.correo}" />
+                </p:column>
+
+                <p:column headerText="Descripcion">
+                    <h:outputText value="#{ip.descripcion}" />
+                </p:column>
+                
+                 <p:column headerText="Direccion">
+                     <h:outputText value="#{ip.direccion}" />
+                </p:column>
+                
+                 <p:column headerText="Nit">
+                     <h:outputText value="#{ip.nit}" />
+                </p:column>
+                
+                 <p:column headerText="Telefono">
+                     <h:outputText value="#{ip.telefono}" />
+                </p:column>
+               </p:dataTable> 
+            
+            <br />
+            <p:fieldset legend="Agregar" toggleable="true" toggleSpeed="500" style="width: 40%">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="id "/>
+                    <h:inputText value="#{ipsBean.ips.id}"  />
+
+                    <h:outputLabel value="Codigo "/>
+                    <h:inputText value="#{ipsBean.ips.codigo}" />
+                    
+                    <h:outputLabel value="Correo "/>
+                    <h:inputText value="#{ipsBean.ips.correo}" />
+                    
+                    <h:outputLabel value="descripcion "/>
+                    <h:inputText value="#{ipsBean.ips.descripcion}" />
+                    
+                    <h:outputLabel value="Direccion "/>
+                    <h:inputText value="#{ipsBean.ips.direccion}" />
+                    
+                    <h:outputLabel value="Nit "/>
+                    <h:inputText value="#{ipsBean.ips.nit}" />
+                    
+                    <h:outputLabel value="Telefono"/>
+                    <h:inputText value="#{ipsBean.ips.telefono}" />
+                
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Guardar" action="#{ipsBean.guardar()}" update="@form"/>                 
+                </h:panelGrid>
+            </p:fieldset>           
+        </h:form>
+
+    </h:body>
+</html>

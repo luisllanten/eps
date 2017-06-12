@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>DepartamentoJSF</title>
+    </h:head>
+
+    <h:body>
+        <h1> Departamento </h1>
+        <h:form>            
+            <p:dataTable id="personas" var="dep" value="#{departamentoBean.departamentos}">
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{dep.codigo}" />
+                </p:column>
+
+               <p:column headerText="Descripcion">
+                   <h:outputText value="#{dep.descripcion}" />
+                </p:column>
+                
+               <p:column headerText="Eliminar">
+                   <h:commandLink action="#{departamentoBean.eliminar(dep)}">Eliminar</h:commandLink>
+                </p:column>
+
+            </p:dataTable> 
+            
+            <br />
+            <p:fieldset legend="Agregar Departamento" toggleable="true" toggleSpeed="500" style="width: 40%">
+                
+                
+                
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Descripcion "/>
+                    <h:inputText value="#{departamentoBean.departamento.descripcion}" />
+                    
+                      <h:outputLabel value=""/>
+                      <p:commandButton value="Guardar" action="#{departamentoBean.guardar()}" update="@form"/>                 
+                </h:panelGrid>
+            </p:fieldset>           
+        </h:form>
+
+    </h:body>
+</html>

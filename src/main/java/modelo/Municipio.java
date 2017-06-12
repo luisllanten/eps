@@ -25,6 +25,7 @@ public class Municipio implements Serializable {
 
     // Constructores
     public Municipio() {
+        departamento =  new Departamento();
     }
     
     public Municipio(String c, String d, Departamento de) {

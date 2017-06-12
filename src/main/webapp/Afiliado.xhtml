@@ -1,0 +1,114 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+          <title>AfiliadoJSF</title>
+    </h:head>
+
+    <h:body>
+        <h1> Afiliados </h1>
+        <h:form>            
+            <p:dataTable id="afiliado" var="Afil" value="#{afiliadoBean.afiliados}">
+              <p:column headerText="Id">
+                   
+                </p:column>
+
+               <p:column headerText="Nombre1">
+                   <h:outputText value="#{Afil.nombre1}" />
+                </p:column>
+               
+                
+                 <p:column headerText="Nombre2">
+                     <h:outputText value="#{Afil.nombre2}" />
+                </p:column>
+
+                <p:column headerText="Apellido1">
+                    <h:outputText value="#{Afil.apellido1}" />
+                </p:column>
+               
+               <p:column headerText="Apellido2">
+                   <h:outputText value="#{Afil.apellido2}" />
+                </p:column>
+                
+                 <p:column headerText="Direccion">
+                     <h:outputText value="#{Afil.direccion}" />
+                </p:column>
+                
+                 <p:column headerText="Estado">
+                     <h:outputText value="#{Afil.estado}" />
+                </p:column>
+                
+                 <p:column headerText="FechaAfiliacion">
+                     <h:outputText value="#{Afil.fechaAfiliacion}" />
+                </p:column>
+                
+                 <p:column headerText="FechaNacimiento">
+                     <h:outputText value="#{Afil.fechaNacimiento}" />
+                </p:column>
+                
+                 <p:column headerText="FechaRetiro">
+                     <h:outputText value="#{Afil.fechaRetiro}" />
+                </p:column>
+                
+                 <p:column headerText="Genero">
+                     <h:outputText value="#{Afil.genero}" />
+                </p:column>
+                
+                <p:column headerText="NumeroDocumnto">
+                    <h:outputText value="#{Afil.numDocumento}" />
+                </p:column>
+                 <p:column headerText="Telefono">
+                     <h:outputText value="#{Afil.telefono}" />
+                </p:column>
+                 <p:column headerText="TipoDocumento">
+                     <h:outputText value="#{Afil.tipoDocumento}" />
+                </p:column>
+            </p:dataTable> 
+            
+            <br />
+            <p:fieldset legend="Agregar Afiliado" toggleable="true" toggleSpeed="500" style="width: 40%">
+                <h:panelGrid columns="2">
+                     <h:outputLabel value="Apellido1 "/>
+                     <h:inputText value="#{AfiliadoBean.afiliado.apellido1}" />
+                    
+                    <h:outputLabel value="Apellido2 "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.apellido2}" />
+                    
+                    <h:outputLabel value="FechaAfiliacion "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.fechaAfiliacion}" />
+                    
+                    <h:outputLabel value="FechaNacimiento "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.fechaNacimiento}" />
+                    
+                    <h:outputLabel value="FechaRetiro "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.fechaRetiro}" />
+                    
+                    <h:outputLabel value="Genero "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.genero}" />
+                    
+                    <h:outputLabel value="nombre1 "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.nombre1}" />
+                    
+                    <h:outputLabel value="nombre2 "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.nombre2}" />
+                    
+                    <h:outputLabel value="NumeroDocumento "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.numDocumento}" />
+                    
+                    <h:outputLabel value="Telefono "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.telefono}" />
+                    
+                    <h:outputLabel value="TipoDocumento "/>
+                    <h:inputText value="#{AfiliadoBean.afiliado.tipoDocumento}" />
+                    
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Guardar" action="#{AfiliadoBean.guardar()}" update="@form"/>                 
+                 
+                </h:panelGrid>
+            </p:fieldset>           
+        </h:form>
+
+    </h:body>
+</html>

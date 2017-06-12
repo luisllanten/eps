@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>GeneroJSF</title>
+    </h:head>
+
+    <h:body>
+        <h1> Genero </h1>
+        <h:form>            
+            <p:dataTable id="genero" var="gen" value="#{generoBean.genero}">
+                <p:column headerText="Genero">
+                    <h:outputText value="#{gen.GENERO}" />
+                </p:column>
+
+               <p:column headerText="Descripcion">
+                    <h:outputText value="#{gen.DESCRIPCION}" />
+                </p:column>
+                
+
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Guardar" action="#{generoBean.guardar}" update="@form"/>                 
+                </h:panelGrid>
+            </p:fieldset>           
+        </h:form>
+
+    </h:body>
+</html>

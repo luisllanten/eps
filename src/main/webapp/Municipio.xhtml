@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>MunicipioJSF</title>
+    </h:head>
+
+    <h:body>
+        <h1> Municipios </h1>
+        <h:form>            
+            <p:dataTable id="municipio" var="mun" value="#{municipioBean.municipios}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{mun.id}" />
+                </p:column>
+
+               <p:column headerText="Codigo">
+                   <h:outputText value="#{mun.departamento.descripcion}" />
+                </p:column>
+               <p:column headerText="Codigo">
+                   <h:outputText value="#{mun.descripcion}" />
+                </p:column>
+               <p:column headerText="Codigo">
+                   <h:outputText value="#{mun.codigo}" />
+                </p:column>
+                
+            </p:dataTable> 
+            
+            <br />
+            <p:fieldset legend="AgregarContrato" toggleable="true" toggleSpeed="500" style="width: 40%">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Departamento: "/>
+                    <h:selectOneMenu value="#{municipioBean.municipio.departamento.codigo}" style="width:100%; cursor: pointer;">
+                        <f:selectItems value="#{departamentoBean.departamentos}" var="dep" itemLabel="#{dep.descripcion}" itemValue="#{dep.codigo}" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Codigo "/>
+                    <h:inputText value="#{municipioBean.municipio.codigo}" />
+                    
+                    <h:outputLabel value="Descripcion "/>
+                    <h:inputText value="#{municipioBean.municipio.descripcion}" />
+
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Guardar" action="#{municipioBean.guardar()}" update="@form"/>                 
+                </h:panelGrid>
+            </p:fieldset>           
+        </h:form>
+    </h:body>
+</html>
